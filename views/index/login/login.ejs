@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <%- include ../../Inc/meta.ejs %>
+    <title>欢迎登录</title>
+    <%- include ../../Inc/header.ejs %>
+</head>
+<body>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-4"></div>
+        <div class="col-md-4">
+            <br><br><br><br><br>
+            <h3 class="text-center">欢迎登录-信息系统</h3>
+            <form action="/index/login/loginin" method="post">
+                <div class="form-group">
+                    <label for="exampleInputEmail1">登录帐号</label>
+                    <input type="text" name="username" id="username" class="form-control" placeholder="登录帐号">
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputPassword1">登录密码</label>
+                    <input type="password" name="password" id="password" class="form-control" placeholder="登录密码">
+                </div>
+                <button id="submit" type="button" class="btn btn-success">登录</button>
+                <a href="/index/login/register" style="float: right;" >去注册</a>
+            </form>
+        </div>
+        <div class="col-md-4"></div>
+    </div>
+</div>
+<%- include ../../Inc/footer.ejs %>
+<script>
+    $('#submit').on('click',function () {
+        let username = $('#username').val();
+        let password = $('#password').val();
+        console.log(username+password);
+        if(_isEmpty(username)){
+            layer.msg('请输入账号');return;
+        }
+        if(_isEmpty(password)){
+            layer.msg('请输入密码');return;
+        }
+        $.ajax({
+            url:'/index/login/loginin',
+            type:'POST',
+            dataType:'json',
+            data:{username:username,password:password},
+        }).done(function (data) {
+            layer.msg(data.msg,{},function () {
+                if(data.status==200){
+                    location.href = '/index/index/index';
+                }
+            });
+        }).fail(function () {
+            layer.msg('网络异常~');
+        });
+    });
+</script>
+</body>
+</html>

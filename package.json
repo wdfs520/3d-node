@@ -1,0 +1,27 @@
+{
+  "name": "www.3d.com",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "assert": "^1.4.1",
+    "body-parser": "^1.18.3",
+    "connect-mongo": "^2.0.3",
+    "ejs": "^2.6.1",
+    "express": "^4.16.4",
+    "express-session": "^1.15.6",
+    "forever": "^0.15.3",
+    "ip": "^1.1.5",
+    "md5": "^2.2.1",
+    "moment": "^2.24.0",
+    "mongodb": "^3.1.13",
+    "mongoose": "^5.4.19",
+    "multiparty": "^4.2.1",
+    "supervisor": "^0.12.0"
+  }
+}
